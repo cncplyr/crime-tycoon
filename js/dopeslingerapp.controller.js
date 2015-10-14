@@ -41,7 +41,9 @@
 				}
 			};
 
-			$scope.actualDealerVolume = function (dealer, drug) { return getActualDealerVolume(dealer, drug); };
+			$scope.actualDealerVolume = function (dealer, drug) {
+				return getActualDealerVolume(dealer, drug); 
+			};
 
 			$scope.actualDealerPrice = function (dealer, drug) {
 				if (drug === undefined) {
@@ -256,11 +258,13 @@
 			};
 
 			$scope.availableDealerUpgrades = [];
+			$scope.avaliableDealerWeapons =[];
 			var upgradeDealer;
 
 			$scope.dealerUpgradeModal = function (dealer) {
 				
 				$scope.calculateAvailableDealerUpgrades(dealer);
+				$scope.calculateAvailableDealerWeapons(dealer);
 				
 				$('#upgradeDealerModal').on('shown.bs.modal', function (e) {
 					var height = 0;
@@ -298,6 +302,10 @@
 					if (!alreadyBought && $scope.gameModel.totalCashEarned > dealerUpgrades[i].price - 2000)
 						$scope.availableDealerUpgrades.push(dealerUpgrades[i]);
 				}
+			};
+			
+			$scope.calculateAvailableDealerWeapons = function(dealer) {
+				$scope.availableDealerWeapons = [].concat(weapons);
 			};
 
 			$scope.purchaseDealerUpgrade = function (upgrade) {
