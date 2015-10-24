@@ -15,12 +15,12 @@
 
 	<script src="lib/jquery/1.11.3/jquery.min.js"></script>
 	<script src="lib/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-	
+
 	<script src="lib/angular/1.4.7/angular.min.js"></script>
 	<script src="lib/angular/1.4.7/angular-sanitize.min.js"></script>
 	<script src="lib/angular/1.4.7/angular-animate.min.js"></script>
 	<script src="js/seedrandom.min.js"></script>
-	
+
 	<script src="js/dopeslinger.game.dealer.js"></script>
 	<script src="js/dopeslinger.game.drugtrade.js"></script>
 	<script src="js/dopeslinger.game.js"></script>
@@ -31,7 +31,6 @@
 
 	<script src="js/jg-progress.js"></script>
 	<script>
-		
 		var scrollMenu = function() {
 			// Stick the #nav to the top of the window
 			var nav = $('#current-cash');
@@ -106,7 +105,7 @@
 			</div>
 
 			<div class="col-xs-12 col-sm-6" id="cash-wrap">
-				<p ng-show="!gameModel.workMode"><strong>Buy cannabis plants to grow weed. Hire dealers to sell the weed.</strong></p>
+				<p ng-show="!gameModel.workMode"><strong>Create your criminal empire!</strong></p>
 				<div id="current-cash" class="strong">Current cash: 
 					<span class="current-cash">{{gameModel.cash|money}}</span> 
 					<span class="glyphicon" ng-class="cashPerSecond > 0 ? 'glyphicon-arrow-up production-header' : 'glypicon-arrow-down muscle-header'"></span> 
@@ -119,7 +118,7 @@
 				<p class="distribution strong" ng-show="gameModel.buff">{{buffMsg}}</p>
 				<p class="distribution strong" ng-repeat="dealer in gameModel.dealers" ng-show="dealer.arrested">{{dealer.arrestMessage}}</p>
 			</div>
-			
+
 			<div class="clearfix"></div>
 
 			<div class="col-xs-12 col-sm-4 production col-pad-5">
@@ -135,9 +134,9 @@
 						</button>
 					</div>
 					<div style="display:none"><p class="jg-tooltip">{{upgrade.tooltip}}</p></div>
-                    <progressbar animate="false" value="cashPercentage(upgrade.price)" ng-class="gameModel.cash < upgrade.price ? 'active progress-striped' : 'progress-bar-success'"></progressbar>
+					<progressbar animate="false" value="cashPercentage(upgrade.price)" ng-class="gameModel.cash < upgrade.price ? 'active progress-striped' : 'progress-bar-success'"></progressbar>
 					<div class="clearfix"></div>
-                </div>
+				</div>
 				
 				<div ng-repeat="drug in gameModel.drugs track by $index" class="drug-anim">                    
 					<div class="drug" ng-click="selectDrug(drug)" ng-class="{'open' : drug.selected}">
