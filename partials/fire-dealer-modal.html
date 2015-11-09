@@ -1,0 +1,23 @@
+<div class="modal fade" id="fireDealerModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Fire {{dealerToFire.name.split(' ')[0]}}?</h4>
+      </div>
+      <div class="modal-body row">
+        <div class="col-xs-12 text-center pb-10"><i>&quot;But I've got {{dealerToFire.kids}} kids to feed!&quot;</i></div>
+        <div class="col-xs-6 pr-10">
+          <button ng-click="fireDealerConfirm()" class="btn btn-default btn-distribution" type="button">
+            <span class="glyphicon iconred glyphicon-user"></span> Fire
+          </button>
+        </div>
+        <div class="col-xs-6 pl-10">
+          <button ng-click="fireDealerCancel()" class="btn btn-default btn-distribution" type="button">
+            <span class="glyphicon icongreen glyphicon-user"></span> Keep
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

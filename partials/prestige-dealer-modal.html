@@ -1,0 +1,29 @@
+<div class="modal fade" id="prestigeDealerModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Recruit a dealer captain</h4>
+      </div>
+      <div class="modal-body row">
+        <div class="col-xs-12 pb-10"><p>Recruit a dealer captain for {{prestigeDealerPrice | money}}</p><p class="strong">This will reset your current game progress but give you access to a captain dealer with perfect attributes and persistant upgrades.</p></div>
+        <div class="col-xs-12">
+          <div class="input-group">
+            <span class="input-group-addon">Dealer name</span>
+            <input type="text" class="form-control" ng-model="prestigeDealerName" placeholder=" enter a name">
+          </div>
+        </div>
+        <div class="col-xs-6 pr-10 mt-20">
+          <button ng-click="prestigeDealerConfirm()" class="btn btn-default btn-distribution" type="button">
+            <span class="glyphicon icongreen glyphicon-user"></span> Okay
+          </button>
+        </div>
+        <div class="col-xs-6 pl-10 mt-20">
+          <button ng-click="prestigeDealerCancel()" class="btn btn-default btn-distribution" type="button">
+            <span class="glyphicon iconred glyphicon-user"></span> Cancel
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

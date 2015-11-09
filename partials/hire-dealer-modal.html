@@ -1,0 +1,23 @@
+<div class="modal fade distribution" id="hireDealerModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Hire dealer</h4>
+      </div>
+      <div class="modal-body row">
+        <div class="col-xs-12 col-sm-4"><button class="btn btn-default btn-distribution new-dealer-btn" ng-click="refreshDealers()" ng-disabled="secondsToDealerRefresh > 0">New dealers <span ng-show="secondsToDealerRefresh > 0">({{secondsToDealerRefresh}})</span></button></div>
+        <p class="col-xs-12 col-sm-8 dealer-warning" ng-show="gameModel.dealers.length >= gameModel.territoryUpgrades + 1">You already have the maximum number of dealers working for you. Either fire a dealer or expand your territory to hire another.</p>
+        <div class="clearfix"></div>
+        <div class="col-xs-12 col-sm-4 dealer-hire-anim" ng-repeat="dealer in hireDealers track by $index" ng-animate="'list'">
+          <p class="dealer-name"><span class="glyphicon glyphicon-tower" ng-show="dealer.type == 'Prestige'"></span> <span class="distribution strong">{{dealer.name}}</span></p>
+          <p class="strong">Volume: <span class="volume iconyellow" ng-bind-html="getStars(dealer.originalVolume,5)"></span></p>
+          <p class="strong">Margin: <span class="price iconyellow" ng-bind-html="getStars(dealer.originalPrice,5)"></span></p>
+          <p>Sells {{actualDealerVolume(dealer,dealer.drug)|weight}} per second</p>
+          <p>Sells 1g of {{dealer.drug}} for {{actualDealerPrice(dealer)|money}}</p>
+          <button class="btn btn-default btn-distribution" ng-click="hireDealer(dealer)" ng-disabled="gameModel.dealers.length >= gameModel.territoryUpgrades + 1 || dealerHired(dealer.seed)">{{dealerHired(dealer.seed) ? 'Hired' : 'Hire ' + dealer.name.split(' ')[0]}}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

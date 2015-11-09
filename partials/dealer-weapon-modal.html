@@ -1,0 +1,26 @@
+<div class="modal fade" id="dealerWeaponModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Dealer Weapons</h4>
+      </div>
+
+      <div class="modal-body row">
+        <div class="col-xs-12 strong mb-20">Current cash: {{gameModel.cash|money}}</div>
+        <div class="col-xs-12 strong mb-20" ng-show="upgradeDealer().type == 'Prestige'">Upgrades are more expensive for your captain dealers, but they will persist through game resets!</div>
+        <div class="col-xs-12 col-sm-4 mb-20 height-match dealer-upgrade-anim" ng-repeat="weapon in availableDealerWeapons | orderBy: 'price'">
+          <p class="strong">{{weapon.name}}</p>
+          <p>{{weapon.tooltip}}</p>
+          <button class="btn btn-default" type="button"
+                  ng-click="purchaseDealerWeapon(weapon)" ng-disabled="gameModel.cash < weapon.price">
+            Buy ({{weapon.price | money}})
+          </button>
+          <progressbar animate="false" value="cashPercentage(weapon.price)" ng-class="gameModel.cash < weapon.price ? 'active progress-striped' : 'progress-bar-success'"></progressbar>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

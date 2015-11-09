@@ -8,11 +8,11 @@ var nicknames = ['Ace', 'Babyface', 'Beefsteak', 'Big dog', 'Birdy', 'Blaster', 
 function Dealer(seed) {
     this.seed = seed;
     Math.seedrandom(seed);
-	
+
     this.volume = Math.random() + 0.5;
     this.price = Math.random() + 0.5;
-	this.originalVolume = this.volume;
-	this.originalPrice = this.price;
+    this.originalVolume = this.volume;
+    this.originalPrice = this.price;
     this.sideVolume = 0;
 
     this.male = true;
@@ -25,32 +25,32 @@ function Dealer(seed) {
         this.name = this.name + ' "' + nicknames[Math.floor(Math.random() * nicknames.length)] + '"';
     }
     this.name = this.name + ' ' + lastNames[Math.floor(Math.random() * lastNames.length)];
-	
+
     this.selected = true;
-	
+
     this.cashEarned = 0;
     this.cashOneSecondAgo = 0;
     this.cashPerSecond = 0;
-	
+
     this.drug = "Weed";
-	this.drugIndex = 0;
-	
+    this.drugIndex = 0;
+
     this.upgrades = [];
-	this.weapon = {};
+    this.weapon = {};
 }
 
-function getActualDealerPrice(dealer, drug) { 
-	return dealer.price * drug.pricePerGram;
+function getActualDealerPrice(dealer, drug) {
+	 return dealer.price * drug.pricePerGram;
 }
 function getActualDealerVolume(dealer, drug) {
-	if (dealer.arrested) {
-		return 0;
-	}
+    if (dealer.arrested) {
+        return 0;
+    }
     if (drug == dealer.drug || drug.name == dealer.drug) {
         return dealer.volume * 3;
     } else {
         return dealer.sideVolume * dealer.volume * 3;
-	}
+    }
 }
 
 function DealerUpgrade(name, tooltip, price, volumeMod, priceMod, secondaryMod, synopsis) {
@@ -60,7 +60,7 @@ function DealerUpgrade(name, tooltip, price, volumeMod, priceMod, secondaryMod, 
     this.volumeMod = volumeMod;
     this.priceMod = priceMod;
     this.secondaryMod = secondaryMod;
-	this.synopsis = synopsis;
+    this.synopsis = synopsis;
 }
 
 var dealerUpgrades = [
@@ -79,30 +79,34 @@ var dealerUpgrades = [
 function Weapon(name, tooltip, synopsis, price, priceMod) {
     this.name = name;
     this.tooltip = tooltip;
-	this.synopsis = synopsis;
+    this.synopsis = synopsis;
     this.price = price;
     this.priceMod = priceMod;
 }
 
 var weapons = [
     new Weapon(
-		'Baseball Bat', 
-		'Handy in a street fight and helps to scare away the competition. Allows the dealer to sell drugs for 5% more money',
-		'+5% margin',
-		150, 1.05),
+      'Baseball Bat',
+      'Handy in a street fight and helps to scare away the competition. Allows the dealer to sell drugs for 5% more money',
+      '+5% margin',
+      150, 1.05
+    ),
     new Weapon(
-		'Combat Knife', 
-		'A large, sharp knife, deadly in the right hands. Allows the dealer to sell drugs for 10% more money',
-		'+10% margin',
-		150, 1.1),
+      'Combat Knife',
+      'A large, sharp knife, deadly in the right hands. Allows the dealer to sell drugs for 10% more money',
+      '+10% margin',
+      150, 1.1
+    ),
     new Weapon(
-		'Glock 17 9mm', 
-		'A small but deadly firearm, nobody will mess with you if you have this. Allows the dealer to sell drugs for 20% more money',
-		'+20% margin',
-		150, 1.2),
+      'Glock 17 9mm',
+      'A small but deadly firearm, nobody will mess with you if you have this. Allows the dealer to sell drugs for 20% more money',
+      '+20% margin',
+      150, 1.2
+    ),
     new Weapon(
-		'AK-47 7.62x39m', 
-		'A powerful Russian assault rifle. Allows the dealer to sell drugs for 30% more money',
-		'+30% margin',
-		150, 1.3)
+      'AK-47 7.62x39m',
+      'A powerful Russian assault rifle. Allows the dealer to sell drugs for 30% more money',
+      '+30% margin',
+      150, 1.3
+    )
 ];
